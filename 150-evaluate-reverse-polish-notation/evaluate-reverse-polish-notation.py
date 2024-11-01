@@ -4,9 +4,7 @@ class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         stack = []
         for c in tokens:
-            if c.isdigit() or c.startswith('-') and c[1:].isdigit():
-                stack.append(int(c))
-            elif c in {"+", "-", "*", "/"}:
+            if c in {"+", "-", "*", "/"}:
                 op2 = stack.pop()
                 op1 = stack.pop()
                 if c == "+":
@@ -22,4 +20,7 @@ class Solution:
                     else:
                         res = int(math.ceil(res)) 
                 stack.append(res)
+            else:
+                stack.append(int(c))
+
         return stack[0]
