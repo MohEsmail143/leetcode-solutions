@@ -4,6 +4,8 @@ class Solution:
         max_area = 0
 
         for i, h in enumerate(heights):
+            if stack and h == stack[-1][1]:
+                continue
             start_idx = i
             while stack and h < stack[-1][1]:
                 start_idx = stack[-1][0]
